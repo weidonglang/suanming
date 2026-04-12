@@ -1,0 +1,261 @@
+:root {
+    --bg-top: #201433;
+    --bg-bottom: #07111f;
+    --panel: rgba(9, 14, 26, 0.76);
+    --panel-border: rgba(255, 255, 255, 0.12);
+    --text-main: #f8fafc;
+    --text-soft: #cbd5e1;
+    --accent: #8bf18b;
+    --danger: #fb7185;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Noto Sans SC", sans-serif;
+    color: var(--text-main);
+    background:
+            radial-gradient(circle at top left, rgba(255, 131, 187, 0.25), transparent 30%),
+            radial-gradient(circle at top right, rgba(96, 165, 250, 0.2), transparent 28%),
+            linear-gradient(160deg, var(--bg-top), var(--bg-bottom));
+    overflow-x: hidden;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: auto;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.32;
+    z-index: 0;
+}
+
+body::before {
+    background: #fb7185;
+    top: 8%;
+    right: -100px;
+}
+
+body::after {
+    background: #38bdf8;
+    bottom: 10%;
+    left: -120px;
+}
+
+.app-shell {
+    position: relative;
+    z-index: 1;
+    width: min(1080px, calc(100% - 32px));
+    margin: 0 auto;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 24px;
+    align-items: center;
+    padding: 32px 0;
+}
+
+.hero-card,
+.result-card {
+    backdrop-filter: blur(14px);
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+}
+
+.hero-card {
+    padding: 36px;
+}
+
+.eyebrow,
+h1 {
+    font-family: "ZCOOL KuaiLe", cursive;
+}
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: #f9a8d4;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 0.95;
+}
+
+.lead,
+.prophecy,
+#statusText,
+#fortuneTip {
+    color: var(--text-soft);
+    line-height: 1.7;
+}
+
+.console {
+    margin: 28px 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.console-line,
+.danger-wrap,
+.result-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.console-line,
+.danger-wrap {
+    justify-content: space-between;
+}
+
+.danger-wrap {
+    margin-top: 16px;
+}
+
+.console-label,
+.tip-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #94a3b8;
+}
+
+.danger-bar {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.danger-fill {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #86efac, #facc15, #fb7185);
+    transition: width 320ms ease;
+}
+
+.fortune-button {
+    border: none;
+    border-radius: 999px;
+    padding: 16px 28px;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #04111f;
+    background: linear-gradient(135deg, #f9a8d4, #fde047 48%, #86efac);
+    cursor: pointer;
+    box-shadow: 0 16px 40px rgba(249, 168, 212, 0.25);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.fortune-button:hover {
+    transform: translateY(-2px) rotate(-1deg);
+    box-shadow: 0 22px 46px rgba(134, 239, 172, 0.28);
+}
+
+.fortune-button:active {
+    transform: translateY(1px);
+}
+
+.result-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 430px;
+    padding: 32px;
+}
+
+.result-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(255,255,255,0.08), transparent 45%);
+    pointer-events: none;
+}
+
+.badge,
+.glitch {
+    display: inline-flex;
+    align-items: center;
+    min-height: 36px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.badge {
+    font-weight: 700;
+}
+
+.glitch {
+    margin-left: auto;
+    max-width: 60%;
+    font-size: 0.92rem;
+    color: #fda4af;
+}
+
+h2 {
+    margin: 28px 0 16px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+}
+
+.tip-panel {
+    margin-top: 28px;
+    padding: 20px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.is-loading .fortune-button {
+    opacity: 0.85;
+    cursor: progress;
+}
+
+.pulse {
+    animation: pulse 0.45s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.985); }
+    45% { transform: scale(1.015); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 860px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+        padding: 20px 0 28px;
+    }
+
+    .hero-card,
+    .result-card {
+        padding: 24px;
+    }
+
+    .result-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .glitch {
+        margin-left: 0;
+        max-width: none;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子玄学研究所</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="app-shell">
+    <section class="hero-card">
+        <p class="eyebrow">Electronic Oracle Lab</p>
+        <h1>电子玄学研究所</h1>
+        <p class="lead">按下按钮，领取一份由后端实时生成的离谱命运播报。</p>
+
+        <div class="console">
+            <div class="console-line">
+                <span class="console-label">状态</span>
+                <span id="statusText">待机中，宇宙暂未加载你的剧情。</span>
+            </div>
+            <div class="danger-wrap">
+                <span class="console-label">风险指数</span>
+                <div class="danger-bar">
+                    <div id="dangerFill" class="danger-fill"></div>
+                </div>
+                <span id="dangerText">0%</span>
+            </div>
+        </div>
+
+        <button id="fortuneButton" class="fortune-button" type="button">启动今日命运引擎</button>
+    </section>
+
+    <section class="result-card" id="resultCard">
+        <div class="result-top">
+            <span class="badge" id="moodBadge">未觉醒</span>
+            <span class="glitch" id="glitchMessage">等待第一次观测...</span>
+        </div>
+        <h2 id="fortuneTitle">你还没有抽取命运</h2>
+        <p id="fortuneProphecy" class="prophecy">按钮就在那儿，宇宙也在线，差你一下。</p>
+        <div class="tip-panel">
+            <span class="tip-label">求生建议</span>
+            <p id="fortuneTip">先按，再怀疑这个项目为什么突然变得不正经。</p>
+        </div>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
